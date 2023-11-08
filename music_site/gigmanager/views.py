@@ -2,14 +2,17 @@ from django.shortcuts import render
 from django.http import HttpResponse 
 
 # Create your views here.
-def index(request):
-    return HttpResponse("Hola Mundo")
+def inicio(request):
+    return HttpResponse('HOLA MUNDO')
+
+def despedida(request):
+    return HttpResponse('ADIOS')
 
 def grupo(request):
-    return HttpResponse("")
+    return HttpResponse('GRUPO INFO')
 
 def sala(request):
-    return HttpResponse("")
-
+    return HttpResponse('SALA INFO')
+    
 def musico(request):
-    return HttpResponse("")
+    return HttpResponse('MUSICO INFO')
