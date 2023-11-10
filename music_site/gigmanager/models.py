@@ -17,3 +17,8 @@ class Sitio(models.Model):
     nombre = models.CharField(max_length=40)
     aforo = models.IntegerField(blank = True, null=True)
     direccion = models.CharField(max_length=100, blank = True, null=True)
+
+#A futuro:
+
+#Evento < para embellecer las funcionalidades
+#Integrante < relaciona Musico y Grupo, se puede pillar el nombre del grupo en el que esta con la relacion.

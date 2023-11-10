@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse 
 
+from .models import Grupo, Sitio, Musico
+
 # Create your views here.
 def inicio(request):
     return HttpResponse('HOLA MUNDO')
@@ -8,11 +10,20 @@ def inicio(request):
 def despedida(request):
     return HttpResponse('ADIOS')
 
-def grupo(request):
-    return HttpResponse('GRUPO INFO')
+def listaGrupo(request):
+    grupos = Grupo.objects.order_by('nombre')
+    cadenaDeTexto = ', '.join([g.nombre for g in grupos])
 
-def sala(request):
-    return HttpResponse('SALA INFO')
+    return HttpResponse(cadenaDeTexto)
+
+def listaSala(request):
+    salas = Sitio.objects.order_by('nombre')
+    cadenaDeTexto = ', '.join([s.nombre for s in salas])
+
+    return HttpResponse(cadenaDeTexto)
     
-def musico(request):
-    return HttpResponse('MUSICO INFO')
+def listaMusico(request):
+    musicos = Musico.objects.order_by('nombre')
+    cadenaDeTexto = ', '.join([m.nombre for m in musicos])
+
+    return HttpResponse(cadenaDeTexto)
