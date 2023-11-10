@@ -10,7 +10,12 @@ class Musico(models.Model):
 
 class Grupo(models.Model):
     nombre = models.CharField(max_length=40)
-    integrante = models.ForeignKey(Musico, on_delete=models.CASCADE)
+    lider = models.ForeignKey(Musico, on_delete=models.CASCADE)
+
+class Integrante(models.Model):
+    musico = models.ForeignKey(Musico, on_delete=models.CASCADE)
+    grupo = models.ForeignKey(Grupo, on_delete=models.CASCADE)
 
 class Sitio(models.Model):
     nombre = models.CharField(max_length=40)
+    aforo = models.IntegerField(blank = True, null=True)
