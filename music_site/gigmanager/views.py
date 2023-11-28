@@ -5,10 +5,10 @@ from .models import Grupo, Sitio, Musico
 
 # Create your views here.
 def inicio(request):
-    return HttpResponse('HOLA MUNDO')
+    return HttpResponse('PLACEHOLDER')
 
 def despedida(request):
-    return HttpResponse('ADIOS')
+    return HttpResponse('PLACEHOLDER')
 
 def listaGrupo(request):
     grupos = Grupo.objects.order_by('nombre')
@@ -27,3 +27,12 @@ def listaMusico(request):
     cadenaDeTexto = ', '.join([m.nombre for m in musicos])
 
     return HttpResponse(cadenaDeTexto)
+
+def musico(request, id_musico):
+    return HttpResponse('PLACEHOLDER')
+
+def sala(request, id_sitio):
+    return HttpResponse('PLACEHOLDER')
+
+def grupo(request, id_grupo):
+    return HttpResponse('PLACEHOLDER')

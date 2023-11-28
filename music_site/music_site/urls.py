@@ -20,8 +20,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('gigmanager/', include('gigmanager.urls')),
-   # path('inicio/', views.inicio, name='index'),
-   # path('grupoEjemplo', views.grupo, name='grupo'),
-   # path('salaEjemplo', views.grupo, name='sala'),
+    path('', include('gigmanager.urls')),
 ]

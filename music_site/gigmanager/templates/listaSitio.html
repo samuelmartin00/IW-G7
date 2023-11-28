@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Gestor de Conciertos</title>
+		<meta charset="utf-8">
+	</head>
+	<body id = "page">
+		<header>
+			<!-- Logo and Header -->
+			<h1 id = "gigHead">Conciertos</h1>
+		</header>
+		<nav>
+			<!-- Nav. Bar -->
+		</nav>
+		<ul>
+    
+			{% for empresa in empresa_list %}   
+    
+			<li> <a href="{% url 'detalleEmpresa' empresa.id%}"> {{ empresa.nombre }} </a> </li> 
+    
+			{% endfor %} 
+		</ul>
+		<hr>
+		<footer>
+			<!-- Go back up, and footer? -->
+		</footer>
+		
+		
+	</body>
+</html>
