@@ -1,0 +1,22 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Artistas</title>
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+</head>
+<body>
+    <h1>Lista de Artistas</h1>
+    <ul class="artist-list">
+        {% for artist in artists %}
+            <li class="artist-item">
+                <div class="artist-info">
+                    <img src="{{ artist.image.url }}" alt="{{ artist.name }} image" class="artist-image">
+                    <a href="{% url 'artist_detail' artist.id %}" class="artist-name">{{ artist.name }}</a>
+                    <p class="artist-genre">{{ artist.genre.name }}</p>
+                </div>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

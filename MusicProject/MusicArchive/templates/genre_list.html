@@ -1,0 +1,20 @@
+{%load static%}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Géneros</title>
+    <link rel="stylesheet" href="{% static '/css/genre_list.css' %}">
+</head>
+<body>
+    <h1>Lista de Géneros</h1>
+    <ul>
+        {% for genre in genres %}
+            <li>
+                <a href="{% url 'genre_detail' genre.id %}">{{ genre.name }}</a>
+                <p>{{genre.description}}</p>
+            </li>
+           
+            {% endfor %}
+    </ul>
+</body>
+</html>

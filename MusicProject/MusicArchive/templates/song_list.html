@@ -1,0 +1,17 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Canciones</title>
+    <link rel="stylesheet" href="{% static '/css/styles.css' %}">
+</head>
+<body>
+    <h1>Lista de Canciones</h1>
+    <ul>
+        {% for song in songs %}
+        <p>{{song.name}}</p>
+            <li><a href="{% url 'song_detail' song.id %}">{{ song.title }}</a> - {{ song.artist.name }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Resultado de la Búsqueda</title>
+    <link rel="stylesheet" href='../static/css/styles.css'>
+</head>
+<body>
+    <h1>Resultados de la Búsqueda: "{{ query }}"</h1>
+    <ul>
+        {% for song in songs %}
+            <li><a href="{% url 'song_detail' song.id %}">{{ song.title }}</a> - {{ song.artist.name }}</li>
+        {% empty %}
+            <li>No se encontraron canciones</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
