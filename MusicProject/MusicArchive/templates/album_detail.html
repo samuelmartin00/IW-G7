@@ -1,13 +1,24 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Detalles del Álbum</title>
-    <link rel="stylesheet" href='../static/css/styles.css'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Álbum - {{ album.title }}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-    <h1>Detalles del Álbum</h1>
-    <h2>{{ album.title }}</h2>
-    <p>Artista: {{ album.artist.name }}</p>
-    <!-- Add more details about the album here -->
+    <div class="album-details">
+        <h1>Detalles del Álbum</h1>
+        <h2>{{ album.title }}</h2>
+        <div class="artist-info">
+            <img src="{{ album.artist.image.url }}" alt="{{ album.artist.name }} Imagen" class="artist-image">
+            <p class="artist-name">Artista: {{ album.artist.name }}</p>
+        </div>
+        <p class="album-property">Año: {{ album.year }}</p>
+        <p class="album-property">Género: {{ album.genre.name }}</p>
+        <p class="album-property">Descripción: {{ album.description|default:"N/A" }}</p>
+        <!-- Otros detalles relevantes del álbum -->
+    </div>
 </body>
 </html>

@@ -1,15 +1,31 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Detalles del Artista</title>
-    <link rel="stylesheet" href="{% static '/css/artist_detail.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalles del Artista - {{ artist.name }}</title>
+    <link rel="stylesheet" href="{% static 'css/artist_detail.css' %}">
 </head>
 <body>
-    <h1>Detalles del Artista</h1>
-    <h2>{{ artist.name }}</h2>
-    <img src="{{ artist.image.url }}" alt="{{ artist.name }} image" class="artist-image">
-    <p>Género: {{ artist.genre.name }}</p>
-    <!-- Add more details about the artist here -->
+    <div class="artist-details">
+        <h1>Detalles del Artista</h1>
+        <h2>{{ artist.name }}</h2>
+        <img src="{{ artist.image.url }}" alt="{{ artist.name }} Imagen" class="artist-image">
+        <p class="artist-property">Género: {{ artist.genre.name }}</p>
+        <p class="artist-property">Descripción: {{ artist.description|default:"N/A" }}</p>
+
+        <!-- Álbumes del artista -->
+        <div class="albums-section">
+            <h3>Álbumes</h3>
+            <ul>
+                {% for album in artist.album_set.all %}
+                    <li>{{ album.title }} - Año: {{ album.year }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Otros detalles relevantes del artista -->
+    </div>
 </body>
 </html>

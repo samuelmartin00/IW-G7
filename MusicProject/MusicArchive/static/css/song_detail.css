@@ -7,7 +7,7 @@ body {
 }
 
 .song-details {
-    max-width: 600px;
+    max-width: 800px;
     margin: 0 auto;
     padding: 20px;
     background-color: #fff;
@@ -24,6 +24,7 @@ h1 {
 .artist-info {
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
 }
 
@@ -45,4 +46,28 @@ h1 {
     color: #666;
     font-size: 16px;
     margin-bottom: 10px;
+}
+
+/* Estilo adicional para el reproductor de audio */
+#audio-player {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.lyrics-section {
+    margin-top: 20px;
+    max-width: 600px; /* Ajusta el ancho máximo de las letras */
+    margin-left: auto; /* Centra el contenedor de las letras */
+    margin-right: auto;
+}
+
+.lyrics-section h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.lyrics-section pre {
+    white-space: pre-wrap;
+    max-width: 100%; /* Asegura que las letras no se extiendan más allá del contenedor */
 }

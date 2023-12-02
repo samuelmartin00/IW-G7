@@ -1,21 +1,55 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
-    <title>Detalles de la Canción</title>
-    <link rel="stylesheet" href="{% static '/css/song_detail.css' %}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ song.title }} - Detalles de la Canción</title>
+    <!-- Incluye Plyr CSS -->
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.3/plyr.css">
+    <link rel="stylesheet" href="{% static 'css/song_detail.css' %}">
 </head>
 <body>
     <div class="song-details">
-        <h1>{{ song.title }}</h1>
-        <div class="artist-info">
-            <img src="{{ song.artist.image.url }}" alt="{{ song.artist.name }} image" class="artist-image">
-            <p class="artist-name">Artista: {{ song.artist.name }}</p>
+        <div class="song-header">
+            <h1>{{ song.title }}</h1>
+            <div class="artist-info">
+                <img src="{{ song.artist.image.url }}" alt="{{ song.artist.name }} Imagen" class="artist-image">
+                <p class="artist-name">Artista: {{ song.artist.name }}</p>
+            </div>
         </div>
-        <p class="song-property">Duración: {{ song.duration }}</p>
-        <p class="song-property">Género: {{ song.genre.name }}</p>
-        <p class="song-property">Álbum: {{ song.album.title }}</p>
-        <!-- Other relevant song details -->
+
+        <div class="song-info">
+            <p class="song-property">Duración: {{ song.duration }}</p>
+            <p class="song-property">Género: {{ song.genre.name }}</p>
+            <p class="song-property">Álbum: {{ song.album.title|default:"N/A" }}</p>
+            <!-- Otros detalles relevantes de la canción -->
+
+            <!-- Reproductor de Audio con Plyr -->
+            {% if song.audio_file %}
+                <div>
+                    <audio id="audio-player" controls>
+                        <source src="{{ song.audio_url }}" type="audio/mp3">
+                        Tu navegador no soporta la etiqueta de audio.
+                    </audio>
+                </div>
+            {% endif %}
+        </div>
+
+        <!-- Sección de Letras -->
+        {% if song.lyrics %}
+            <div class="lyrics-section">
+                <h2>Letras</h2>
+                <pre>{{ song.lyrics }}</pre>
+            </div>
+        {% endif %}
     </div>
+
+    <!-- Incluye Plyr JS -->
+    <script src="https://cdn.plyr.io/3.6.3/plyr.js"></script>
+    <script>
+        // Inicializa Plyr para el elemento de audio
+        const player = new Plyr('#audio-player');
+    </script>
 </body>
 </html>
