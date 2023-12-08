@@ -1,5 +1,8 @@
-from django.shortcuts import render, get_object_or_404
-from .models import Song, Genre, Artist, Album
+from django.shortcuts import render, get_object_or_404, redirect
+from .models import Song, Genre, Artist, Album, Satisfaction
+from django.contrib.auth.decorators import login_required
+from .forms import FeedbackForm
+
 
 
 def index(request):
@@ -38,6 +41,29 @@ def album_list(request):
 def album_detail(request, album_id):
     album = get_object_or_404(Album, id=album_id)
     return render(request, 'album_detail.html', {'album': album})
+
+@login_required
+def album_feedback(request, album_id):
+    album = get_object_or_404(Album, pk=album_id)
+
+    if request.method == "POST":
+        form = FeedbackForm(request.POST)
+        if form.is_valid():
+            feedback = form.cleaned_data['feedback']
+            rating = form.cleaned_data['rating']
+
+            satisfaction = Satisfaction.objects.create(
+                album=album,
+                user=request.user,
+                feedback=feedback,
+                rating=rating
+            )
+
+            return redirect(to="index")
+    else:
+        form = FeedbackForm()
+
+    return render(request, "album_feedback.html", {'album': album, 'form': form})
 
 def genre_list(request):
     genres = Genre.objects.all()

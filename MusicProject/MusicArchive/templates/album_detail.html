@@ -18,7 +18,28 @@
         <p class="album-property">Año: {{ album.year }}</p>
         <p class="album-property">Género: {{ album.genre.name }}</p>
         <p class="album-property">Descripción: {{ album.description|default:"N/A" }}</p>
-        <!-- Otros detalles relevantes del álbum -->
+
+        <form action="{% url 'album_feedback' album.id %}" method="post">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="feedback">Tu opinión:</label>
+                <input type="text" class="form-control" id="feedback" name="feedback" placeholder="Tu opinión sobre el álbum">
+            </div>
+
+            <div class="form-group">
+                <label for="rating">¿Qué te ha parecido?</label>
+                <select class="form-control" id="rating" name="rating">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
     </div>
 </body>
 </html>

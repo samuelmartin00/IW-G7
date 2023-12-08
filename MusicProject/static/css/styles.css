@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+ul.artist-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+li.artist-item {
+    background-color: #fff;
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    text-align: center;
+    width: 250px;
+}
+
+li.artist-item:hover {
+    transform: scale(1.05);
+}
+
+.artist-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.artist-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.artist-name {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 0;
+}
+
+.artist-genre {
+    color: #666;
+    font-size: 1em;
+    margin: 0;
+}
+
+a:hover {
+    color: #0056b3;
+}

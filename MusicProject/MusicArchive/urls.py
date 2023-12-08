@@ -19,6 +19,7 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 from . import views
+from .views import album_feedback
 
 
 
@@ -32,6 +33,7 @@ urlpatterns = [
     path('artist/<int:artist_id>/', views.artist_detail, name='artist_detail'),
     path('albums/', views.album_list, name='album_list'),
     path('album/<int:album_id>/', views.album_detail, name='album_detail'),
+    path('album/<int:album_id>/feedback/', album_feedback, name='album_feedback'),
     path('genres/', views.genre_list, name='genre_list'),
     path('genre/<int:genre_id>/', views.genre_detail, name='genre_detail'),
 ]

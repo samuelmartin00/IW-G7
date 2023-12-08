@@ -1,0 +1,33 @@
+/* artist_detail.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    text-align: center; /* Center text in the body */
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px; /* Increase font size for the title */
+}
+
+h2 {
+    color: #007bff;
+    margin-bottom: 10px;
+    font-size: 20px; /* Increase font size for the artist's name */
+}
+
+p {
+    color: #666;
+    font-size: 18px; /* Increase font size for genre */
+    margin-bottom: 10px;
+}
+
+.artist-image {
+    width: 200px; /* Set a custom width */
+    height: auto; /* Maintain the aspect ratio */
+    display: block;
+    margin: 0 auto; /* Center the image */
+}

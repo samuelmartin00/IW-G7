@@ -1,0 +1,73 @@
+/* song_detail.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.song-details {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.artist-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.artist-image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.artist-name {
+    color: #666;
+    font-size: 18px;
+    margin: 0;
+}
+
+.song-property {
+    color: #666;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Estilo adicional para el reproductor de audio */
+#audio-player {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.lyrics-section {
+    margin-top: 20px;
+    max-width: 600px; /* Ajusta el ancho máximo de las letras */
+    margin-left: auto; /* Centra el contenedor de las letras */
+    margin-right: auto;
+}
+
+.lyrics-section h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.lyrics-section pre {
+    white-space: pre-wrap;
+    max-width: 100%; /* Asegura que las letras no se extiendan más allá del contenedor */
+}
