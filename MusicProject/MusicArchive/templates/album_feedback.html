@@ -1,27 +1,34 @@
-{% extends 'base.html' %}
+{% extends 'bootstrap4/base.html' %}
+
+{% block title %}Enviar comentarios sobre el álbum{% endblock %}
 
 {% block content %}
-<h1>Enviar comentarios sobre el álbum</h1>
+    <h1>Enviar comentarios sobre el álbum</h1>
 
-<form action="{% url 'album_feedback' album.id %}" method="post">
-{% csrf_token %}
+    <div class="container">
+        {% block body %}
+        <form action="{% url 'album_feedback' album.id %}" method="post">
+            {% csrf_token %}
 
-<div class="form-group">
-<label for="feedback">Tu opinión:</label>
-<input type="text" class="form-control" id="feedback" name="feedback" placeholder="Tu opinión sobre el álbum">
-</div>
+            <div class="form-group">
+                <label for="feedback">Tu opinión</label>
+                <input type="text" class="form-control" id="feedback" name="feedback" placeholder="Tu opinión sobre el álbum" required>
+                <span class="help-block">Debes rellenar este campo.</span>
+            </div>
 
-<div class="form-group">
-<label for="rating">¿Qué te ha parecido?</label>
-<select class="form-control" id="rating" name="rating">
-<option value="1">Muy malo</option>
-<option value="2">Malo</option>
-<option value="3">Regular</option>
-<option value="4">Bueno</option>
-<option value="5">Muy bueno</option>
-</select>
-</div>
+            <div class="form-group">
+                <label for="rating">¿Qué te ha parecido?</label>
+                <select class="form-control" id="rating" name="rating">
+                    <option value="1">Muy malo</option>
+                    <option value="2">Malo</option>
+                    <option value="3">Regular</option>
+                    <option value="4">Bueno</option>
+                    <option value="5">Muy bueno</option>
+                </select>
+            </div>
 
-<button type="submit" class="btn btn-primary">Enviar</button>
-</form>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+        {% endblock %}
+    </div>
 {% endblock %}
