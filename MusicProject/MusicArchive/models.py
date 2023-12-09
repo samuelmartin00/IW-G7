@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 class Genre(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
+    image = models.ImageField(upload_to='artist_images/', null=True, blank=True)
 
 class Artist(models.Model):
     name = models.CharField(max_length=200)
@@ -20,6 +21,7 @@ class Album(models.Model):
     artist = models.ForeignKey(Artist, on_delete=models.CASCADE, related_name='albums')
     year = models.IntegerField()
     genre = models.ForeignKey(Genre, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to='album_images/', blank=True, null=True)
     description = models.TextField(blank=True)
 
 class Song(models.Model):

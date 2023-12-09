@@ -9,23 +9,47 @@
 </head>
 <body>
     <div class="artist-details">
-        <h1>Detalles del Artista</h1>
-        <h2>{{ artist.name }}</h2>
+        <h1>{{ artist.name }}</h1>
         <img src="{{ artist.image.url }}" alt="{{ artist.name }} Imagen" class="artist-image">
         <p class="artist-property">Género: {{ artist.genre.name }}</p>
         <p class="artist-property">Descripción: {{ artist.description|default:"N/A" }}</p>
 
         <!-- Álbumes del artista -->
         <div class="albums-section">
-            <h3>Álbumes</h3>
-            <ul>
+            <h2>Álbumes</h2>
+            <ul class="album-list">
                 {% for album in artist.album_set.all %}
-                    <li>{{ album.title }} - Año: {{ album.year }}</li>
+                    <li>
+                        {% if album.image %}
+                            <img src="{{ album.image.url }}" alt="{{ album.title }} Imagen" class="album-image">
+                        {% else %}
+                            <!-- Provide a default image or placeholder if no image is available -->
+                            <img src="{% static 'path/to/default-album-image.jpg' %}" alt="{{ album.title }} Imagen" class="album-image">
+                        {% endif %}
+                        <a href="{% url 'album_detail' album.id %}">{{ album.title }}</a>
+                        <p class="album-year">Año: {{ album.year }}</p>
+                    </li>
                 {% endfor %}
             </ul>
         </div>
 
-        <!-- Otros detalles relevantes del artista -->
+        <!-- Singles del artista -->
+        <div class="singles-section">
+            <h2>Singles</h2>
+            <ul class="single-list">
+                {% for single in artist.single_set.all %}
+                    <li>
+                        {% if single.image %}
+                            <img src="{{ single.image.url }}" alt="{{ single.title }} Imagen" class="single-image">
+                        {% else %}
+                            <!-- Provide a default image or placeholder if no image is available -->
+                            <img src="{% static 'path/to/default-single-image.jpg' %}" alt="{{ single.title }} Imagen" class="single-image">
+                        {% endif %}
+                        <a href="{% url 'single_detail' single.id %}">{{ single.title }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 </body>
 </html>

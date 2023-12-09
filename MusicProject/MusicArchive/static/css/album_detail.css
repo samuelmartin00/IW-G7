@@ -5,41 +5,27 @@ body {
     background-color: #f2f2f2;
 }
 
-h1 {
+h1, h2 {
     text-align: center;
     color: #333;
 }
 
-ul.artist-list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-}
-
-li.artist-item {
-    background-color: #fff;
-    margin: 10px;
+.album-details {
+    max-width: 600px;
+    margin: 0 auto;
     padding: 20px;
+    background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out;
-    text-align: center;
-    width: 250px;
 }
 
-li.artist-item:hover {
-    transform: scale(1.05);
-}
-
-.artist-info {
+.album-details .artist-info {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.artist-image {
+.album-details .artist-image {
     width: 120px;
     height: 120px;
     object-fit: cover;
@@ -47,20 +33,33 @@ li.artist-item:hover {
     margin-bottom: 10px;
 }
 
-.artist-name {
-    text-decoration: none;
-    color: #007bff;
+.album-property {
+    margin: 10px 0;
     font-weight: bold;
-    font-size: 1.2em;
-    margin: 0;
 }
 
-.artist-genre {
-    color: #666;
-    font-size: 1em;
-    margin: 0;
+.album-description {
+    margin: 10px 0;
+    line-height: 1.5;
 }
 
-a:hover {
-    color: #0056b3;
+form {
+    margin-top: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
 }

@@ -1,20 +1,26 @@
-{%load static%}
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="es">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Géneros</title>
-    <link rel="stylesheet" href="{% static '/css/genre_list.css' %}">
+    <link rel="stylesheet" href="{% static 'css/genre_list.css' %}">
 </head>
 <body>
     <h1>Lista de Géneros</h1>
-    <ul>
+    <ul class="genre-list">
         {% for genre in genres %}
             <li>
+                {% if genre.image %}
+                    <img src="{{ genre.image.url }}" alt="{{ genre.name }} Imagen" class="genre-image">
+                {% else %}
+                    <!-- Provide a default image or placeholder if no image is available -->
+                    <img src="{% static 'path/to/default-image.jpg' %}" alt="{{ genre.name }} Imagen" class="genre-image">
+                {% endif %}
                 <a href="{% url 'genre_detail' genre.id %}">{{ genre.name }}</a>
-                <p>{{genre.description}}</p>
             </li>
-           
-            {% endfor %}
+        {% endfor %}
     </ul>
 </body>
 </html>

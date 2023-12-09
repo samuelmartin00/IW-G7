@@ -1,15 +1,29 @@
+{% load static %}
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Álbumes</title>
-    <link rel="stylesheet" href="{ static '/css/styles.css' }">
+    <link rel="stylesheet" href="{% static 'css/album_list.css' %}">
 </head>
 <body>
-    <h1>Lista de Álbumes</h1>
-    <ul>
-        {% for album in albums %}
-            <li><a href="{% url 'album_detail' album.id %}">{{ album.title }}</a> - {{ album.artist.name }}</li>
-        {% endfor %}
-    </ul>
+    <header>
+        <h1>Lista de Álbumes</h1>
+    </header>
+    <main>
+        <ul class="album-list">
+            {% for album in albums %}
+                <li>
+                    {% if album.image %}
+                        <img src="{{ album.image.url }}" alt="{{ album.title }} Image" class="album-image">
+                    {% endif %}
+                    <div class="album-details">
+                        <a href="{% url 'album_detail' album.id %}">{{ album.title }}</a> - {{ album.artist.name }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </main>
 </body>
 </html>
