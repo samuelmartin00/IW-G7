@@ -1,4 +1,13 @@
 /* Reset some default styles for better consistency */
+
+header { /* Stylish header with a rich blue accent for visual distinction */
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #ddd; /* Introduce a subtle border for visual separation */
+  }
+
 body, h1, ul {
     margin: 0;
     padding: 0;
@@ -89,4 +98,18 @@ a:hover {
         width: 100%;
         padding: 10px;
     }
+}
+
+footer { /* Consistent footer with the same accent color as the header */
+    text-align: center; /* Center text alignment in the footer for a balanced layout */
+    padding: 20px;
+    background-color: #007bff; /* Maintain consistency with the header's accent color */
+    color: #fff;
+    border-top: 1px solid #ddd; /* Add a subtle border for visual separation */
+  }  
+
+  
+.scrollable-container {
+  max-height: 400px; /* Adjust the height as needed */
+  overflow-y: auto;
 }

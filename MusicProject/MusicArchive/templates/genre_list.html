@@ -1,26 +1,53 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1
+    .0">
     <title>Lista de Géneros</title>
+    <link rel="stylesheet" href="{% static 'css/song_list.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/genre_list.css' %}">
+    
 </head>
+
 <body>
-    <h1>Lista de Géneros</h1>
-    <ul class="genre-list">
-        {% for genre in genres %}
-            <li>
-                {% if genre.image %}
-                    <img src="{{ genre.image.url }}" alt="{{ genre.name }} Imagen" class="genre-image">
-                {% else %}
-                    <!-- Provide a default image or placeholder if no image is available -->
-                    <img src="{% static 'path/to/default-image.jpg' %}" alt="{{ genre.name }} Imagen" class="genre-image">
-                {% endif %}
-                <a href="{% url 'genre_detail' genre.id %}">{{ genre.name }}</a>
-            </li>
-        {% endfor %}
-    </ul>
+    <header>
+        <h1><a href="{% url 'index' %}">Music Archive</a></h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'song_list' %}">Song List</a></li>
+                <li><a href="{% url 'artist_list' %}">Artist List</a></li>
+                <li><a href="{% url 'genre_list' %}">Genre List</a></li>
+                <li><a href="{% url 'album_list' %}">Album List</a></li>
+                <!-- Add links to other pages -->
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Lista de Géneros</h1>
+        <div class="scrollable-container">
+            <ul class="genre-list">
+                {% for genre in genres %}
+                    <li>
+                        <div class="genre-container">
+                            {% if genre.image %}
+                                <img src="{{ genre.image.url }}" alt="{{ genre.name }} Image" class="genre-image">
+                            {% endif %}
+                            <a href="{% url 'genre_detail' genre.id %}">{{ genre.name }}</a>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Music Archive. All rights reserved.</p>
+    </footer>
 </body>
+
 </html>

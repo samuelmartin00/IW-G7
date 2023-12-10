@@ -1,19 +1,10 @@
 <!-- index.html -->
-{%load static%}
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Music Archive Index</title>
-    <link rel="stylesheet" href="{% static '/css/index.css' %}">
-</head>
-<body> 
-    <h1>Welcome to the Music Archive</h1>
-    <ul>
-        <li><a href="{% url 'song_list' %}">Song List</a></li>
-        <li><a href="{% url 'artist_list' %}">Artist List</a></li>
-        <li><a href="{% url 'genre_list' %}">Genre List</a></li>
-        <li><a href="{% url 'album_list' %}">Album List</a></li>
-        <!-- Add links to other pages -->
-    </ul>
-</body>
-</html>
+
+{% extends 'base.html' %}
+
+{% block title %}Music Archive Index{% endblock %}
+
+{% block content %}
+    <h2>Welcome to the Music Archive</h2>
+    <!-- Content specific to the index page -->
+{% endblock %}

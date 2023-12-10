@@ -2,15 +2,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{% static 'css/main.css' %}">
   <link rel="stylesheet" href="{% static 'css/song_list.css' %}">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
   <title>{% block title %}Music Archive{% endblock %}</title>
 </head>
-
 <body>
   <header>
     <h1><a href="{% url 'index' %}">Music Archive</a></h1>
@@ -25,26 +23,11 @@
   </header>
 
   <main>
-    <h1>Lista de Canciones</h1>
-    <div class="scrollable-container"> <!-- Added container for scrolling -->
-      <ul class="album-list"> <!-- Updated class name to match album_list.css -->
-        {% for song in songs %}
-          <li>
-            {% if song.image %}
-              <img src="{{ song.image.url }}" alt="{{ song.title }} Image" class="album-image"> <!-- Updated class name to match album_list.css -->
-            {% endif %}
-            <div class="album-details"> <!-- Updated class name to match album_list.css -->
-              <a href="{% url 'song_detail' song.id %}">{{ song.title }}</a> - {{ song.artist.name }}
-            </div>
-          </li>
-        {% endfor %}
-      </ul>
-    </div>
+    {% block content %}{% endblock %}
   </main>
-
+  
   <footer>
     <p>&copy; 2023 Music Archive. All rights reserved.</p>
   </footer>
 </body>
-
 </html>
