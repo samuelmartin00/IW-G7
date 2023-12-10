@@ -1,4 +1,13 @@
 /* genre_detail.css */
+
+header { /* Stylish header with a rich blue accent for visual distinction */
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 1px solid #ddd; /* Introduce a subtle border for visual separation */
+  }
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -21,4 +30,12 @@ p {
     color: #666;
     font-size: 16px;
     margin-bottom: 10px;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f2f2f2;
+    color: #007bff;
+    border-top: 1px solid #ddd;
 }

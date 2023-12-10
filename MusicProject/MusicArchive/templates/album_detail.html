@@ -1,35 +1,76 @@
 {% load static %}
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalles del Álbum - {{ album.title }}</title>
-    <link rel="stylesheet" href="{% static 'css/album_detail.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/main.css' %}">
+  <link rel="stylesheet" href="{% static 'css/album_detail.css' %}">
+  <title>{% block title %}Music Archive{% endblock %}</title>
 </head>
+  <header>
+    <h1><a href="{% url 'index' %}">Music Archive</a></h1>
+    <nav>
+      <ul>
+        <li><a href="{% url 'song_list' %}">Song List</a></li>
+        <li><a href="{% url 'artist_list' %}">Artist List</a></li>
+        <li><a href="{% url 'genre_list' %}">Genre List</a></li>
+        <li><a href="{% url 'album_list' %}">Album List</a></li>
+      </ul>
+    </nav>
+  </header>
+
+<main>
 <body>
     <div class="album-details">
-        <h1>Detalles del Álbum</h1>
-        <h2>{{ album.title }}</h2>
+        <h1>{{ album.title }}</h1>
+
+        <!-- Artist information -->
         <div class="artist-info">
             {% if album.artist.image %}
                 <img src="{{ album.artist.image.url }}" alt="{{ album.artist.name }} Imagen" class="artist-image">
             {% endif %}
             <p class="artist-name">Artista: {{ album.artist.name }}</p>
         </div>
-        <p class="album-property">Año: {{ album.year }}</p>
-        <p class="album-property">Género: {{ album.genre.name }}</p>
-        <p class="album-property">Descripción:</p>
-        <p class="album-description">{{ album.description|default:"N/A" }}</p>
 
-        <form action="{% url 'album_feedback' album.id %}" method="post">
+        <!-- Album details -->
+        <div class="album-details-section">
+            <p class="album-property">Año: {{ album.year }}</p>
+            <p class="album-property">Género: {{ album.genre.name }}</p>
+            <p class="album-property">Descripción:</p>
+            <p class="album-description">{{ album.description|default:"N/A" }}</p>
+        </div>
+
+        <!-- Songs section -->
+        <div class="songs-section">
+            <h2>Canciones del Álbum</h2>
+            <ul class="song-list">
+                {% for song in album.songs.all %}
+                    <li class="song-item">
+                        {% if song.audio_file %}
+                            <audio controls>
+                                <source src="{{ song.audio_file.url }}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        {% endif %}
+                        <div class="song-details">
+                            <p class="song-title">{{ song.title }}</p>
+                            <p class="song-duration">Duración: {{ song.duration }}</p>
+                            <p class="song-description">{{ song.description|default:"N/A" }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Feedback form -->
+        <form action="{% url 'album_feedback' album.id %}" method="post" class="feedback-form">
             {% csrf_token %}
-
             <div class="form-group">
                 <label for="feedback" class="album-property">Tu opinión (Obligatorio) :</label>
                 <input type="text" class="form-control" id="feedback" name="feedback" placeholder="Tu opinión sobre el álbum">
             </div>
-
             <div class="form-group">
                 <label for="rating" class="album-property">¿Qué te ha parecido?</label>
                 <select class="form-control" id="rating" name="rating">
@@ -40,9 +81,13 @@
                     <option value="5">5</option>
                 </select>
             </div>
-
             <button type="submit" class="btn btn-primary">Enviar</button>
         </form>
     </div>
+</body>
+</main>
+<footer>
+    <p>&copy; 2023 Music Archive. All rights reserved.</p>
+  </footer>
 </body>
 </html>
