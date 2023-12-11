@@ -23,7 +23,14 @@ nav ul {
   display: flex;
   justify-content: center;
 }
-
+main {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow-y: auto; /* Make the main content scrollable */
+  max-height: 500px; /* Set a maximum height if needed */
+}
 nav li {
   margin: 0 10px;
   padding: 10px 20px;
