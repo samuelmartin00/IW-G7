@@ -4,7 +4,7 @@ body {
     font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f8f8f8; /* Updated background color */
+    background-color: #f8f8f8; 
 }
 
 h1 {
@@ -16,7 +16,7 @@ h1 {
     border-bottom: 1px solid #ddd;
 }
 
-ul.album-list { /* Updated class name to match album_list.css */
+ul.album-list { 
     list-style: none;
     padding: 0;
     display: flex;
