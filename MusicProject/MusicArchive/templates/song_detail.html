@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="{% static 'css/song_detail.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
 </head>
-<body>
     <header>
         <h1><a href="{% url 'index' %}">Music Archive</a></h1>
         <nav>
@@ -23,6 +22,7 @@
             </ul>
         </nav>
     </header>
+<body>
     <div class="song-details">
         <div class="song-header">
             <h1>{{ song.title }}</h1>

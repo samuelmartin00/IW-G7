@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="{% static '/css/artist_list.css' %}">
     <link rel="stylesheet" href="{% static '/css/main.css' %}">
 </head>
-<body>
     <header>
         <h1><a href="{% url 'index' %}">Music Archive</a></h1>
         <nav>
@@ -20,22 +19,25 @@
             </ul>
         </nav>
     </header>
-    <h1><a href="{% url 'index' %}"></a>Lista de Artistas</h1>
-    <div class="scrollable-container">
-        <ul class="artist-list">
-            {% for artist in artists %}
-                <li class="artist-item">
-                    <div class="artist-info">
-                        <img src="{{ artist.image.url }}" alt="{{ artist.name }} image" class="artist-image">
-                        <a href="{% url 'artist_detail' artist.id %}" class="artist-name">{{ artist.name }}</a>
-                        <p class="artist-genre">{{ artist.genre.name }}</p>
-                    </div>
-                </li>
-            {% endfor %}
-        </ul>
-    </div>
+<body>
+    <main>
+        <h1><a href="{% url 'index' %}"></a>Lista de Artistas</h1>
+            <div class="scrollable-container">
+                <ul class="artist-list">
+                    {% for artist in artists %}
+                        <li class="artist-item">
+                            <div class="artist-info">
+                                <img src="{{ artist.image.url }}" alt="{{ artist.name }} image" class="artist-image">
+                                <a href="{% url 'artist_detail' artist.id %}" class="artist-name">{{ artist.name }}</a>
+                                <p class="artist-genre">{{ artist.genre.name }}</p>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+</body>
+</main>
     <footer>
         <p>&copy; 2023 Music Archive. All rights reserved.</p>
     </footer>
-</body>
 </html>
