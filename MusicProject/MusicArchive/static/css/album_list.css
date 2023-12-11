@@ -6,7 +6,7 @@ header { /* Stylish header with a rich blue accent for visual distinction */
     padding: 20px;
     text-align: center;
     border-bottom: 1px solid #ddd; /* Introduce a subtle border for visual separation */
-  }
+}
 
 body, h1, ul {
     margin: 0;
